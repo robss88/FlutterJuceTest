@@ -51,8 +51,8 @@ final juce = loadJuceLibrary();
 
 // see https://pub.flutter-io.cn/packages/ffi/example
 String fromUtf8AndFree(Pointer<Utf8> utf8Ptr) {
-  String resultString = Utf8.fromUtf8(utf8Ptr);
-  free(utf8Ptr);
+  String resultString = utf8Ptr.toDartString();
+  calloc.free(utf8Ptr);
   return resultString;
 }
 
